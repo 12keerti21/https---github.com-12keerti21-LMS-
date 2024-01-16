@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Copperplate, Papyrus, fantasy;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('https://www.elucidat.com/wp-content/uploads/2022/09/Untitled-design-42.png') center/cover no-repeat;
+        }
+        #faculty-page-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        #signup-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            max-width: 300px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem; 
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .signup-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="faculty-page-title">
+        <h1>Faculty Page</h1>
+    </div>
+
+    <div id="signup-container">
+        <h2>Sign Up</h2>
+        <form action="welcome.html" method="post" onsubmit="signup(event)">
+            <input type="text" placeholder="Username" id="signup-username" name="signup-username" required>
+            <input type="password" placeholder="Password" id="signup-password" name="signup-password" required>
+            <input type="email" placeholder="Email ID" id="signup-email" name="signup-email" required>
+            <input type="text" placeholder="Employee ID" id="signup-employee-id" name="signup-employee-id" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function signup(event) {
+            event.preventDefault();
+            var signupUsername = document.getElementById('signup-username').value;
+            var signupPassword = document.getElementById('signup-password').value;
+            var signupEmail = document.getElementById('signup-email').value;
+            var signupEmployeeId = document.getElementById('signup-employee-id').value;
+
+
+
+            var welcomeWindow = window.open('', '_blank');
+
+            if (welcomeWindow) {
+                welcomeWindow.document.write('<html><head><title>Welcome</title>');
+                welcomeWindow.document.write('<style>');
+                welcomeWindow.document.write('body {');
+                welcomeWindow.document.write('    font-family: Arial, sans-serif;');
+                welcomeWindow.document.write('    display: flex;');
+                welcomeWindow.document.write('    justify-content: center;');
+                welcomeWindow.document.write('    align-items: center;');
+                welcomeWindow.document.write('    height: 100vh;');
+                welcomeWindow.document.write('    margin: 0;');
+                welcomeWindow.document.write('}');
+                welcomeWindow.document.write('</style>');
+                welcomeWindow.document.write('</head><body>');
+                welcomeWindow.document.write('<div id="welcome-message">');
+                welcomeWindow.document.write('<h2>Welcome!</h2>');
+                welcomeWindow.document.write('<p>Account created for ' + signupUsername + '!</p>');
+                welcomeWindow.document.write('</div>');
+                welcomeWindow.document.write('</body></html>');
+                welcomeWindow.document.close();
+            }
+        }
+    </script>
+</body>
+
+</html>

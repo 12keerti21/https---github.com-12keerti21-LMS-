@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Copperplate, Papyrus, fantasy;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('https://www.elucidat.com/wp-content/uploads/2022/09/Untitled-design-42.png') center/cover no-repeat;
+
+        }
+        #login-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            max-width: 300px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem; 
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            color:#000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: transparent; 
+            backdrop-filter: blur(5px); 
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 0.5rem; 
+            margin-bottom: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        .nav-buttons {
+            display: flex;
+        }
+        .nav-buttons a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-buttons">
+            <a href="students.html" target="_blank">Student Login</a>
+            <a href="staff.html" target="_blank">Teacher Login</a>
+        </div>
+    </nav>
+
+    <div id="login-container">
+        <h2>Sign Up</h2>
+        <form action="welcome.html" method="post" onsubmit="signIn(event)">
+            <input type="text" placeholder="Username" id="username" name="username" required>
+            <input type="email" placeholder="Email ID" id="email" name="email" required>
+            <input type="password" placeholder="Password" id="password" name="password" required>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        function signIn(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            var welcomeWindow = window.open('', '_blank');
+
+            if (welcomeWindow) {
+                welcomeWindow.document.write('<html><head><title>Welcome</title>');
+                welcomeWindow.document.write('<style>');
+                welcomeWindow.document.write('body {');
+                welcomeWindow.document.write('    font-family: Arial, sans-serif;');
+                welcomeWindow.document.write('    display: flex;');
+                welcomeWindow.document.write('    justify-content: center;');
+                welcomeWindow.document.write('    align-items: center;');
+                welcomeWindow.document.write('    height: 100vh;');
+                welcomeWindow.document.write('    margin: 0;');
+                welcomeWindow.document.write('}');
+                welcomeWindow.document.write('</style>');
+                welcomeWindow.document.write('</head><body>');
+                welcomeWindow.document.write('<div id="welcome-message">');
+                welcomeWindow.document.write('<h2>Welcome!</h2>');
+                welcomeWindow.document.write('<p>Thank you for signing in, ' + username + '!</p>');
+                welcomeWindow.document.write('</div>');
+                welcomeWindow.document.write('</body></html>');
+                welcomeWindow.document.close();
+            }
+        }
+    </script>
+</body>
+
+</html>
